@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('/Resource/Images/fondo.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #ff008c;
+    font-family: Baskerville, serif;
+}
+
+
+#btnlogout {
+    background-color: #c0159b; 
+    color: white; 
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btnlogout:hover {
+    background-color: #3c0352; 
+}

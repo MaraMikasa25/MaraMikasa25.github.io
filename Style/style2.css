@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("/Resource/Images/fondo2.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #be0ece;
+    font-family: Baskerville, serif;
+}
+
+.contenedor {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    width: 80%; 
+    max-width: 400px; 
+    height: auto; 
+    box-shadow: 0 0 10px rgb(255, 3, 213);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.contenedor h2 {
+    margin-bottom: 20px;
+}
+
+.contenedor h3 {
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #c0159b;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3c0352;
+}
