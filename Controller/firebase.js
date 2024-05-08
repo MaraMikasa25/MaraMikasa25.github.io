@@ -7,12 +7,22 @@ import {
   onAuthStateChanged,
   signOut,
   signInWithPopup,
+  deleteUser,
   sendEmailVerification,
-  sendPasswordResetEmail,
-  deleteUser
+  sendPasswordResetEmail
+  
 } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js'
+import { 
+
+  getFirestore,
+  collection, 
+  addDoc 
+
+} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js"
 
 
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDulXP38o1PDMdQeM2-KvLmr6KyHsU7kpI",
@@ -23,28 +33,29 @@ const firebaseConfig = {
   appId: "1:836599007275:web:7ea1107f57cb145db5826e"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const user = auth.currentUser;
+const db = getFirestore(app)
 
-//Registro de Usario
+// Métodos de Autenticacion
+
+// Registro de Usario
 export const registerauth = (email, password) =>
   createUserWithEmailAndPassword(auth, email, password)
 
-//Verifacion por correo
+// Verifacion por correo
 export const verification = () =>
   sendEmailVerification(auth.currentUser)
 
-//autenticación de usuario
+// Autenticación de usuario
 export const loginauth = (email, password) =>
   signInWithEmailAndPassword(auth, email, password)
 
-// Inicion Sesion Google
+// Inicio Sesion Google
 export const googleauth = (provider) =>
   signInWithPopup(auth, provider)
 
-//  Inicion Sesion Facebook
+// Inicio Sesion Facebook
 export const facebookauth = (provider) =>
   signInWithPopup(auth, provider)
 
@@ -62,7 +73,7 @@ export function userstate(){
   });
 }
 
-//Restablecer contraseña por correo
+// Restablecer contraseña por correo
 export const recoverypass = (email) =>
   sendPasswordResetEmail(auth, email)
 
@@ -70,11 +81,27 @@ export const recoverypass = (email) =>
 export const loginout = () =>
   signOut(auth)
 
-
 // Eliminar usuario
 export const deleteuser = (user) =>
-  deleteUser(user);
+  deleteUser(user)
 
-export { auth }; // Exportar la instancia de autenticación
+export { auth };
 
+// Métodos de Firestore Database
 
+// Agregar Datos
+export const addregister = (nombres, apellidos, fecha, cedula, estado, rh, genero, telefono, direccion, email) =>
+  addDoc(collection(db, "Usuarios"), {
+
+    nombre: nombres,
+    apellido: apellidos,
+    fecha: fecha,
+    cedula: cedula,
+    estado:estado,
+    rh:rh,
+    genero:genero,
+    telefono: telefono,
+    direccion: direccion,
+    email: email
+
+  });
